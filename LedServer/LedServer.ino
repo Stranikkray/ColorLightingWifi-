@@ -8,7 +8,7 @@
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LED_NUM, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-WiFiServer server(2005);
+WiFiServer server(5505);
 WiFiClient client;
 
 byte saveMode[SizeBytes];

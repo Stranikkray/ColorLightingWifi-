@@ -1,63 +1,46 @@
 using System.Net.Sockets;
+using System.Windows.Forms;
 
 namespace LedClient
 {
     public partial class Form1 : Form
     {
+        private TcpClient tc;
+        private NetworkStream nc ;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        //byte[] data = new byte[3] {100, 150, 255 };        
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            ColorPaint();
-            //FonPaint();
+            tc = new TcpClient("192.168.1.170", 5505);
+            nc = tc.GetStream();
         }
 
-        //void FonPaint()
-        //{
-        //    Graphics g = Graphics.FromHwnd(this.Handle);
-        //    g.DrawPie(new Pen(Color.Black),new Rectangle(), 65,8);
-        //    Color c = Color.Gra
+        //byte[] data = new byte[3] {100, 150, 255 };        
 
-
-        //}
-
-
-        async void ColorPaint()
+        private async void button1_Click(object sender, EventArgs e)
         {
-            byte[] data = new byte[] { 0, 255};
+            await ColorPaint(new byte[2] { 0, (byte)trackBarBrightness.Value });
 
-            CreateConnect:
+            await ColorPaint(new byte[2] { 1, (byte)trackBarColor.Value });
+        }
+        private async Task ColorPaint(byte[] data)
+        {
+        CreateConnect:
 
             try
             {
-                TcpClient tc = new TcpClient("192.168.1.166", 2005);
-                Console.WriteLine("Server find");
-                NetworkStream nc = tc.GetStream();
-                textBox1.Text = "Yes";
-
-                while (true)
-                {
-                    nc.Write(data);
-                    nc.Flush();
-                    await Task.Delay(200);
-                }
-
-                //StreamWriter sw = new StreamWriter(nc);
-                // sw.Write(data[0]);
-
-                tc.Close();
+                nc.Write(data);
+                nc.Flush();
+                await Task.Delay(200); 
             }
             catch (Exception)
             {
-                textBox1.Text = "No";
                 goto CreateConnect;
             }
-        }
+        }       
     }
-
 }

@@ -20,7 +20,6 @@ D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\LedClie
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\LedClient.deps.json
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\LedClient.runtimeconfig.json
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\LedClient.dll
-D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\ref\LedClient.dll
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\bin\Debug\net6.0-windows\LedClient.pdb
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\LedClient.csproj.AssemblyReference.cache
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\LedClient.Form1.resources
@@ -34,3 +33,4 @@ D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\LedClie
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\ref\LedClient.dll
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\LedClient.pdb
 D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\LedClient.genruntimeconfig.cache
+D:\GitHub\ColorLightingWifi\LedClient\LedClient\obj\Debug\net6.0-windows\refint\LedClient.dll
