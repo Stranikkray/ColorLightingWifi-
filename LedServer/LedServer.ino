@@ -4,11 +4,11 @@
 
 #define LED_PIN D2     // пин
 #define LED_NUM 97    // количество светодиодов
-#define SizeBytes 2
+#define SizeBytes 4
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(LED_NUM, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-WiFiServer server(5505);
+WiFiServer server(2678);
 WiFiClient client;
 
 byte saveMode[SizeBytes];
@@ -35,12 +35,12 @@ void loop()
     {
       while(client.available())
       {
-        data[ind++] = client.read();
+        Serial.print(data[ind]);
+        Serial.print(" ");
+        data[ind++] = client.read();         
       }
       client.flush();
-      Serial.print(data[0]);
-      Serial.print(" ");
-      Serial.println(data[1]);
+      Serial.print("\n");
       SetMode(data);          
     }
   }  
@@ -58,6 +58,11 @@ void SetMode(byte selection[])
     case 1:
     {
       setHue(selection[1]);       
+      break; 
+    }     
+    case 2:
+    {
+      setRGB(selection[1],selection[2],selection[3]);       
       break; 
     }     
     default:

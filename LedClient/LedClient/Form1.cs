@@ -5,8 +5,7 @@ namespace LedClient
 {
     public partial class Form1 : Form
     {
-        private TcpClient tc;
-        private NetworkStream nc ;
+        
 
         public Form1()
         {
@@ -15,8 +14,7 @@ namespace LedClient
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tc = new TcpClient("192.168.1.170", 5505);
-            nc = tc.GetStream();
+            
         }
 
         //byte[] data = new byte[3] {100, 150, 255 };        
@@ -33,14 +31,28 @@ namespace LedClient
 
             try
             {
+                TcpClient tc;
+                NetworkStream nc;
+                tc = new TcpClient("192.168.1.170", 2678);
+                nc = tc.GetStream();
+
                 nc.Write(data);
                 nc.Flush();
-                await Task.Delay(200); 
+                nc.Close();
+                tc.Close();
+                await Task.Delay(data.Length * 200);
             }
             catch (Exception)
             {
                 goto CreateConnect;
             }
-        }       
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            await ColorPaint(new byte[2] { 0, (byte)trackBarBrightness.Value });
+
+            await ColorPaint(new byte[4] { 2, 255, 255, 255});
+        }
     }
 }

@@ -12,3 +12,8 @@ void setHue(byte color)
   }      
   strip.show();  
 }  
+void setRGB(byte R, byte G, byte B)
+{ 
+  strip.fill((R*256 +G)*256 + B,0,LED_NUM);     
+  strip.show();  
+}
